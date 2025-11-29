@@ -1,0 +1,60 @@
+#pragma once
+
+#include <opencv2/opencv.hpp>
+#include "kalmanFilter.h"
+#include <deque>
+
+using namespace cv;
+using namespace std;
+
+enum TrackState { New = 0, Tracked, Lost, Removed };
+
+class STrack
+{
+public:
+	STrack(vector<float> tlwh_, float score, int cls);
+	~STrack();
+
+	vector<float> static tlbr_to_tlwh(vector<float> &tlbr);
+	void static multi_predict(vector<STrack*> &stracks, byte_kalman::KalmanFilter &kalman_filter);
+	void static_tlwh();
+	void static_tlbr();
+	vector<float> tlwh_to_xyah(vector<float> tlwh_tmp);
+	vector<float> to_xyah();
+	void mark_lost();
+	void mark_removed();
+	int next_id();
+	int end_frame();
+	
+	void activate(byte_kalman::KalmanFilter &kalman_filter, int frame_id);
+	void re_activate(STrack &new_track, int frame_id, bool new_id = false);
+	void update(STrack &new_track, int frame_id);
+    // 更新轨迹点（自动保持最多 30 个点）
+    void update_trajectory(const cv::Point& pt) {
+        trajectory.push_back(pt);
+        if (trajectory.size() > 30) {  // 超过 30 个点时移除最旧的点
+            trajectory.pop_front();
+        }
+    }
+
+public:
+	bool is_activated;
+	int track_id;
+	int state;
+
+	vector<float> _tlwh;
+	vector<float> tlwh;
+	vector<float> tlbr;
+	int frame_id;
+	int tracklet_len;
+	int start_frame;
+
+	KAL_MEAN mean;
+	KAL_COVA covariance;
+	float score;
+    int cls;
+    std::deque<cv::Point> trajectory;
+
+private:
+	byte_kalman::KalmanFilter kalman_filter;
+};

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- 视频预览区域 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/control_panel">
+        
+        <SurfaceView
+            android:id="@+id/surface_network_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- 控制面板 -->
+    <LinearLayout
+        android:id="@+id/control_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:background="#80000000"
+        android:padding="16dp">
+
+        <!-- 状态信息行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tv_connection_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="连接状态: 未连接"
+                android:textColor="#FF5722"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_fps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FPS: 0.0"
+                android:textColor="#4CAF50"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 检测信息行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tv_frame_count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="帧数: 0"
+                android:textColor="#2196F3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_detection_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="检测: 0"
+                android:textColor="#FF9800"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 控制按钮行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_pause_resume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="暂停检测"
+                android:textSize="14sp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_btn_translucent"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn_screenshot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="截图"
+                android:textSize="14sp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_btn_translucent"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- 检测参数调节行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp">
+
+            <!-- 置信度阈值 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="置信度:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp" />
+
+                <SeekBar
+                    android:id="@+id/seek_threshold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:progress="45" />
+
+                <TextView
+                    android:id="@+id/tv_threshold_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.45"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginStart="8dp"
+                    android:minWidth="40dp" />
+            </LinearLayout>
+
+            <!-- NMS阈值 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NMS:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp" />
+
+                <SeekBar
+                    android:id="@+id/seek_nms"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:progress="65" />
+
+                <TextView
+                    android:id="@+id/tv_nms_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.65"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginStart="8dp"
+                    android:minWidth="40dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 底部按钮行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btn_stop_stream"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="停止检测"
+                android:textSize="14sp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_btn_translucent"
+                android:textColor="#F44336" />
+
+            <Button
+                android:id="@+id/btn_back_to_config"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="返回配置"
+                android:textSize="14sp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_btn_translucent"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 检测结果覆盖层 -->
+    <LinearLayout
+        android:id="@+id/overlay_detection_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:background="#80000000"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_detection_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="检测信息"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</RelativeLayout>

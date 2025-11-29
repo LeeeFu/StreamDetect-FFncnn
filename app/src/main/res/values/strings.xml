@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">demo_test</string>
+    <string name="enter">进入检测</string>
+    <string name="model_prompt">请选择模型</string>
+    <string name="cpu_prompt">请选择推理模式</string>
+    <string name="input_prompt">请选择输入尺寸</string>
+    <string-array name="model_list">
+        <item>high_speed</item>
+        <item>yolov8n</item>
+        <item>yolov8s</item>
+        <item>yolov8s-seg</item>
+        <item>NanoDet</item>
+        <item>SimplePose</item>
+        <item>DbFace</item>
+        <item>FacelandMark</item>
+        <item>PoseFace</item>
+    </string-array>
+    <string-array name="input_size">
+        <item>320x320</item>
+        <item>640x640</item>
+    </string-array>
+</resources>

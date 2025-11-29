@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+     <!-- 人物背景图 -->
+    <ImageView
+        android:id="@+id/bg_people"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_people" />
+    <!-- 背景图 -->
+    <!-- 猫狗神经网络图（去底PNG或半透明） -->
+    <ImageView
+        android:id="@+id/bg_network"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_gravity="top"
+        android:alpha="0.35"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_network" />
+    <!-- 右上角CPU/GPU切换图标 -->
+    <ImageView
+        android:id="@+id/img_device"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="12dp"
+        android:src="@drawable/ic_cpu"
+        android:padding="8dp"
+        android:contentDescription="切换设备" />
+    <!-- 按钮区域 -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="220dp"
+        android:gravity="center_horizontal"
+        android:padding="16dp">
+
+       <!-- 模型仓库区 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- 模型选择提示词 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:text="模型选择："
+                android:textColor="#512DA8"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <!-- 模型选择下拉框 -->
+            <Spinner
+                android:id="@+id/btn_model_manage"
+                style="@style/CustomSpinnerStyle"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:entries="@array/model_list"
+                android:popupBackground="#80FFFFFF" />
+        </LinearLayout>
+        <!-- 输入尺寸选择区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="100dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- 输入尺寸选择提示词 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:text="输出尺寸："
+                android:textColor="#512DA8"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- 输入尺寸选择下拉框 -->
+            <Spinner
+                android:id="@+id/btn_size_manage"
+                style="@style/CustomSpinnerStyle"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:entries="@array/input_size"
+                android:popupBackground="#80FFFFFF" />
+        </LinearLayout>
+
+       <!-- 两个主功能按钮 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_detect"
+                style="@style/PrimaryButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:text="本地数据识别" />
+
+            <Button
+                android:id="@+id/btn_segment"
+                style="@style/PrimaryButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="云端设备接入" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -93,11 +93,11 @@ if(FFMPEG_LIBS)
         message(STATUS "📦 使用x264库: ${X264_LIBS}")
     endif()
     add_library(yolov8ncnn SHARED
-            main.cpp
-            ffmpeg_main.cpp
-            yolo_common.cpp
+            camera_jni.cpp
+            ffmpeg_jni.cpp
+            vision_base.cpp
+            vision_infer.cpp
             ndkcamera.cpp
-            globals.cpp
             ${TRACK_SRCS}
             ${DETECT_SRCS}
             ${SEG_SRCS}

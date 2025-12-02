@@ -4,7 +4,7 @@
 #include <benchmark.h>
 #include <net.h>
 
-#include "globals.h"
+#include "vision_base.h"
 #include "IYoloAlgo.h"
 #include "SimplePose.h"
 #include "DbFace.h"

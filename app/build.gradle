@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace 'com.tencent.LocalDetect'
+    namespace 'NcnnTencent.LocalDetect'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.tencent.LocalDetect"
+        applicationId "NcnnTencent.LocalDetect"
         minSdk 24
         targetSdk 34
         versionCode 1

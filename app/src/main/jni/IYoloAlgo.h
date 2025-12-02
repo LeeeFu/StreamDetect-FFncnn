@@ -1,7 +1,8 @@
 #pragma once
 #include <opencv2/opencv.hpp>
 #include <vector>
-#include "globals.h" // Object结构体
+#include <android/asset_manager.h>
+#include "vision_base.h" // Object结构体
 
 class IYoloAlgo {
 public:

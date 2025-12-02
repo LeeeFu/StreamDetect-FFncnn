@@ -4,7 +4,7 @@
 #include <benchmark.h>
 #include <net.h>
 
-#include "globals.h"
+#include "vision_base.h"
 #include "IYoloAlgo.h"
 // 人体姿态关键点定义：
 // 0 nose, 1 left_eye, 2 right_eye, 3 left_Ear, 4 right_Ear (面部关键点 - 过滤掉)

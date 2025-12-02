@@ -4,7 +4,7 @@
 #include <benchmark.h>
 #include <net.h>
 
-#include "globals.h"
+#include "vision_base.h"
 #include "IYoloAlgo.h"
 //if (landmark_id >= 0 && landmark_id <= 31) return "contour";
 //if (landmark_id >= 32 && landmark_id <= 51) return "eyebrow";

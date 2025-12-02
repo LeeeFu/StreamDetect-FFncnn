@@ -1,5 +1,5 @@
 #include "STrack.h"
-#include "globals.h"
+#include "vision_base.h"
 
 class BYTETracker
 {

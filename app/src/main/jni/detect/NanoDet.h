@@ -3,7 +3,7 @@
 #include <opencv2/core/core.hpp>
 #include <benchmark.h>
 #include <net.h>
-#include "globals.h"
+#include "vision_base.h"
 #include "IYoloAlgo.h"
 typedef struct HeadInfo {
     std::string cls_layer;

@@ -4,7 +4,7 @@
 #include <benchmark.h>
 #include <net.h>
 
-#include "globals.h"
+#include "vision_base.h"
 #include "IYoloAlgo.h"
 
 struct Box {
